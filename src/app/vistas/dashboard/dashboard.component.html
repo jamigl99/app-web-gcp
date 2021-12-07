@@ -1,0 +1,187 @@
+<section class="home-section">
+    <div class="container-left">
+        <div class="consulta">
+
+            <span class="input-group-text">
+                Funcionalidad A
+            </span><br>
+            <form [formGroup]="peticionForm3" (ngSubmit)="listaRest(peticionForm3.value)">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="exampleFormControlInput2">Barrio </label>
+                        <select class="form-select" id="inputGroupSelect02" formControlName="barrio">
+                            <option disabled selected>Selecciona una opción</option>
+                            <option value="Bronx">BRONX</option>
+                            <option value="Brooklyn">BROOKLYN</option>
+                            <option value="Manhattan">MANHATTAN</option>
+                            <option value="Queens">QUEENS</option>
+                            <option value="Staten Island">STATEN ISLAND</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="margin-left: 100px" class="btn btn-success">Mostrar </button>
+                <button style="margin-left: 200px" type="button" class="btn btn-danger" (click)="Limpiar()">Limpiar
+                    <i class="fa fa-trash"></i></button>
+                <br><br>
+                <div class="tabla-resumen">
+                    <table class="table table-striped table-bordered" width="100%">
+                        <thead style="background-color: cornflowerblue;color:aliceblue">
+                            <tr>
+                                <th>Nombre&nbsp;</th>
+                                <th>Ciudad&nbsp;</th>
+                                <th>Cocina&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rest of listRest">
+                                <td style="text-align: center;">{{ rest.name }}</td>
+                                <td style="text-align: center;">{{ rest.borough }}</td>
+                                <td style="text-align: center;">{{ rest.cuisine }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form><br>
+
+            <br>
+
+
+            <span class="input-group-text">
+                Funcionalidad B
+            </span><br>
+            <form [formGroup]="peticionForm4" (ngSubmit)="listaRestxID(peticionForm4.value)">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="exampleFormControlInput4">ID Restaurante </label>
+                        <input style="text-align: center;" type="text" class="form-control"
+                            placeholder="Ingresar ID Restaurante" formControlName="restaurant_id">
+                    </div>
+                </div>
+                <button type="submit" style="margin-left: 100px" class="btn btn-success">Mostrar </button>
+                <button style="margin-left: 200px" type="button" class="btn btn-danger" (click)="Limpiar()">Limpiar
+                    <i class="fa fa-trash"></i></button>
+                <br><br>
+                <div class="tabla-resumen">
+                    <table class="table table-striped table-bordered" width="100%">
+                        <thead style="background-color: cornflowerblue;color:aliceblue">
+                            <tr>
+                                <th>ID&nbsp;</th>
+                                <th>Nombre&nbsp;</th>
+                                <th>Ciudad&nbsp;</th>
+                                <th>Cocina&nbsp;</th>
+                                <th>Edificio&nbsp;</th>
+                                <th>Coordenadas&nbsp;</th>
+                                <th>Calle&nbsp;</th>
+                                <th>Código Postal&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="restId">
+                                <td style="text-align: center;">{{ restId.restaurant_id }}</td>
+                                <td style="text-align: center;">{{ restId.name }}</td>
+                                <td style="text-align: center;">{{ restId.borough }}</td>
+                                <td style="text-align: center;">{{ restId.cuisine }}</td>
+                                <td style="text-align: center;">{{ restId.address.building }}</td>
+                                <td style="text-align: center;">{{ restId.address.coord }}</td>
+                                <td style="text-align: center;">{{ restId.address.street }}</td>
+                                <td style="text-align: center;">{{ restId.address.zipcode }}</td>
+                        </tbody>
+                        <tbody *ngIf="!restId">
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"></td>
+                    </tbody>
+                    </table>
+                </div>
+            </form><br>
+
+            <span class="input-group-text">
+                Funcionalidad C
+            </span><br>
+            <form [formGroup]="peticionForm1" (ngSubmit)="numRestaurantesxBarrio(peticionForm1.value)">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="exampleFormControlInput1">¿Cuantos restaurantes existen en
+                            ... </label>
+                        <select class="form-select" id="inputGroupSelect01" formControlName="barrio">
+                            <option disabled selected>Selecciona una opción</option>
+                            <option value="Bronx">BRONX</option>
+                            <option value="Brooklyn">BROOKLYN</option>
+                            <option value="Manhattan">MANHATTAN</option>
+                            <option value="Queens">QUEENS</option>
+                            <option value="Staten Island">STATEN ISLAND</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="margin-left: 100px" class="btn btn-success">Mostrar </button>
+                <button style="margin-left: 200px" type="button" class="btn btn-danger" (click)="Limpiar()">Limpiar
+                    <i class="fa fa-trash"></i></button>
+                <br><br>                
+                <div class="form-group">
+                    <div *ngIf="numRestaurant" class="input-group mb-3">
+                        <p style="margin-left: 220px">{{numRestaurant}} restaurantes</p>
+                    </div>
+                </div>
+            </form><br>
+
+            <br>
+
+            <span class="input-group-text">
+                Funcionalidad D
+            </span><br>
+            <form [formGroup]="peticionForm2" (ngSubmit)="listaRestaurantes(peticionForm2.value)">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="exampleFormControlInput2">Barrio </label>
+                        <select class="form-select" id="inputGroupSelect02" formControlName="barrio">
+                            <option disabled selected>Selecciona una opción</option>
+                            <option value="Bronx">BRONX</option>
+                            <option value="Brooklyn">BROOKLYN</option>
+                            <option value="Manhattan">MANHATTAN</option>
+                            <option value="Queens">QUEENS</option>
+                            <option value="Staten Island">STATEN ISLAND</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="exampleFormControlInput3">Cocina </label>
+                        <input style="text-align: center;" type="text" class="form-control"
+                            placeholder="Ingresar cocina" formControlName="cocina">
+                    </div>
+                </div>
+                <button type="submit" style="margin-left: 100px" class="btn btn-success">Mostrar </button>
+                <button style="margin-left: 200px" type="button" class="btn btn-danger" (click)="Limpiar()">Limpiar
+                    <i class="fa fa-trash"></i></button>
+                <br><br>
+                <div class="tabla-resumen">
+                    <table class="table table-striped table-bordered" width="100%">
+                        <thead style="background-color: cornflowerblue;color:aliceblue">
+                            <tr>
+                                <th>Nombre&nbsp;</th>
+                                <th>Edificio&nbsp;</th>
+                                <th>Coordenadas&nbsp;</th>
+                                <th>Calle&nbsp;</th>
+                                <th>Código Postal&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let restaurante of restaurantes">
+                                <td style="text-align: center;">{{ restaurante.name }}</td>
+                                <td style="text-align: center;">{{ restaurante.address.building }}</td>
+                                <td style="text-align: center;">{{ restaurante.address.coord }}</td>
+                                <td style="text-align: center;">{{ restaurante.address.street }}</td>
+                                <td style="text-align: center;">{{ restaurante.address.zipcode }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form><br>
+            <br>
+        </div>
+    </div>
+</section>

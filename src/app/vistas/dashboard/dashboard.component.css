@@ -1,0 +1,45 @@
+.home-section{
+	position: relative;
+/* 	background-color:darkslateblue; */
+	min-height: 100vh;
+	top: 0;
+	left: 78px;
+	width: calc(100% - 78px);
+	transition: all 0.5s ease;
+	z-index: 2;
+  }
+
+.home-section .text{
+	display: inline-block;
+	color: #11101d;
+	font-size: 25px;
+	font-weight: 500;
+	margin: 18px
+  }
+
+.consulta {
+	margin-top: 5%;
+	display:inline-block;
+	height:30%;
+	overflow:hidden;
+}	
+
+thead tr th{ 
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: #4d7275;
+	color: #fff;
+}
+
+.container-left{
+	width: 40%; 
+	float: left;
+	margin: 1% 1%;
+}
+
+.container-right{
+	width: 54%; 
+	float: right;
+	margin: 3% 2%;
+}
